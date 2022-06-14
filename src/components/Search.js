@@ -52,20 +52,16 @@ export default function Search() {
 			<div className='search-books-results'>
 				<ol className='books-grid'>
 					{searchStr !== "" &&
-						(
-              (Array.isArray(data) &&
-              data.length !== 0 &&
-              data !== undefined &&
-              !data.error) 
-              ? (
-                data.map((item) => (
-                  <Book key={item.id} bookData={item} handleShelf={handleShelf} />
-                ))
-              ) 
-              : (
-                <h1>No Result</h1>
-						))
-            }
+						(Array.isArray(data) &&
+						data.length !== 0 &&
+						data !== undefined &&
+						!data.error ? (
+							data.map((item) => (
+								<Book key={item.id} bookData={item} handleShelf={handleShelf} />
+							))
+						) : (
+							<h1>No Result</h1>
+						))}
 				</ol>
 			</div>
 		</div>
