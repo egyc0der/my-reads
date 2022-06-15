@@ -8,7 +8,7 @@ export default function Book({bookData,handleShelf}) {
     useEffect(()=>{
         !bookData.shelf &&
         BooksAPI.get(bookData.id).then((data) => setShelfVal(data.shelf));
-    },[])
+    },[bookData.id,bookData.shelf])
   return (
 		bookData && (
 			<li>

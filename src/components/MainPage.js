@@ -10,7 +10,7 @@ export default function MainPage() {
     const [shelf3,setShelf3] = useState();
     const [idUpdate, setIdUpdate] = useState("");
     const [isInitial, setIsInitial] = useState(true);
-
+	
     useEffect(() => {
 			BooksAPI.getAll().then((data) => {
 				setShelf1(data.filter((b) => b.shelf === "currentlyReading"));
@@ -21,6 +21,7 @@ export default function MainPage() {
     useEffect(()=>{
         idUpdate !== "" && setIsInitial(false);
     },[idUpdate])
+
   return (
 		<div className='app'>
 			<div className='list-books'>

@@ -6,16 +6,21 @@ import uuid from "react-uuid";
 
 export default function BookShelf({title,books,idUpdate}) {
     const [bookToShelfObj, setBookToShelfObj] = useState({});
-    
+    const [id,setID] = useState(uuid())
+
     const handleShelf = (shelfValue, bookObj) => {
                 setBookToShelfObj({ shelf: shelfValue, book: bookObj });
             };
     useEffect(() => {
 			Object.keys(bookToShelfObj).length &&
 				BooksAPI.update(bookToShelfObj.book, bookToShelfObj.shelf).then(() =>
-					idUpdate(uuid())
+					setID(uuid())
 				);
 		}, [bookToShelfObj]);
+	useEffect(() => {
+		idUpdate(id)
+	}, [id,idUpdate])
+		
 	return (
 		<div className='bookshelf'>
 			<h2 className='bookshelf-title'>{title}</h2>
